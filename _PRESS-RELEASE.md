@@ -1,4 +1,4 @@
-# Project Name #
+# Weather Go #
 
 <!-- 
 > This material was originally posted [here](http://www.quora.com/What-is-Amazons-approach-to-product-development-and-product-management). It is reproduced here for posterities sake.
@@ -18,27 +18,47 @@ Once the project moves into development, the press release can be used as a touc
  
 ## Heading ##
   > Name the product in a way the reader (i.e. your target customers) will understand.
+  Weather Go
 
 ## Sub-Heading ##
   > Describe who the market for the product is and what benefit they get. One sentence only underneath the title.
+  Weather information for those on the go... Weather Go!
 
 ## Summary ##
   > Give a summary of the product and the benefit. Assume the reader will not read anything else so make this paragraph good.
+  Do you need a light-jacket? A raincoat? Shorts and sunglasses? Cut the guessing, cut the time loss. Get the weather details 
+  that you care most about: The day's forecast and the day's temperature. For those on the go, there is Weather Go.
 
 ## Problem ##
   > Describe the problem your product solves.
+  Weather Go is a no-frills application that cuts out the bloat with other weather applications. Sometimes, users don't
+  need all the scientific data to make a quick decision on what they're going to wear for the day or if they plan to commute
+  via bicycle. Get the weather information you want, when you need it. 
 
 ## Solution ##
   > Describe how your product elegantly solves the problem.
+  Weather Go will take your geo-coordinates and fetch weather details for your location. Weather Go will simply and elegantly
+  tell you what the weather is like outside.
 
 ## Quote from You ##
   > A quote from a spokesperson in your company.
+  "Weather Go is for the everyday person who already has a ton of decisions to make and doesn't have time to parse through
+  bundles of weather information to get to what they want: How cold is it? Is it going to rain? Sometimes you just want to 
+  know whether or not you're going to have a wet-ride to work or if you need an umbrella. Simple as that!"
 
 ## How to Get Started ##
   > Describe how easy it is to get started.
+  Open Weather Go on your favorite browser, bookmark it, and get the information you need.
 
 ## Customer Quote ##
   > Provide a quote from a hypothetical customer that describes how they experienced the benefit.
+  "Somtimes I just want to know if I need to bring an umbrella - I don't need humidity information or doplar radar images.
+  Weather Go quickly and succintly tells me the information thats most going to impact my day. Temperature and the current
+  forecast."
 
 ## Closing and Call to Action ##
   > Wrap it up and give pointers where the reader should go next.
+  In a growingly complex world, Weather Go is a back-to-basics application that will help you optimize your day and the
+  weather-related decisions that you make. 
+
+  When you're on the go, use Weather Go.
