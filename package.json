@@ -20,6 +20,7 @@
     "angular": "^1.6.4",
     "bootstrap": "^3.3.7",
     "express": "^4.15.2",
-    "mongoose": "^4.9.6"
+    "mongoose": "^4.9.6",
+    "request": "^2.81.0"
   }
 }
