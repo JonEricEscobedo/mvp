@@ -13,7 +13,7 @@ app.post('/weather', function(req, res) {
   console.log('Inside /weather');
   request({
     method: 'GET',
-    uri: `https://api.darksky.net/forecast/${API.KEY}/37.8267,-122.4233`
+    uri: `https://api.darksky.net/forecast/${API.KEY}/37.8267,-122.4233?exclude=minutely,hourly,flags`
   }, function(error, response, body) {
     console.log(body);
   })
