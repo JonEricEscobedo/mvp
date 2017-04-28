@@ -11,7 +11,7 @@ app.get('/', function(req, res) {
 });
 
 app.post('/weather', function(req, res) {
-  console.log('Inside /weather');
+  console.log('Inside POST /weather');
   request({
     method: 'GET',
     uri: `https://api.darksky.net/forecast/${API.KEY}/37.8267,-122.4233?exclude=minutely,hourly,flags`
@@ -44,6 +44,19 @@ app.post('/weather', function(req, res) {
 
   res.end();
 });
+
+app.get('/weather', function(req, res) {
+  console.log('Inside GET /weather');
+
+  Weather.find({}, function(error, response) {
+    if (error) {
+      throw error;
+    } else {
+      return res.send(response);
+    }
+  });
+});
+
 
 app.listen(1337, function() {
   console.log('Now listening on port 1337!');
