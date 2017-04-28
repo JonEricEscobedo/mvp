@@ -2,6 +2,7 @@ var express = require('express');
 var app = express();
 var API = require('./src/config/config.js');
 var request = require('request');
+var Weather = require('./database/index.js');
 
 app.use(express.static('./'))
 
@@ -15,7 +16,30 @@ app.post('/weather', function(req, res) {
     method: 'GET',
     uri: `https://api.darksky.net/forecast/${API.KEY}/37.8267,-122.4233?exclude=minutely,hourly,flags`
   }, function(error, response, body) {
-    console.log(body);
+    if (error) {
+      throw error;
+    } else {
+      var parsedBody = JSON.parse(body);
+      var currentCity;
+      var currentTemperature = Math.floor(parsedBody.currently.temperature);
+      var currentSummary = parsedBody.currently.summary;
+      var currentDate = parsedBody.currently.time;
+      var currentWeather = new Weather(
+      {
+        city: 'Oakland',
+        temp: currentTemperature,
+        summary: currentSummary,
+        date: currentDate
+      });
+
+      currentWeather.save(function(errror, response) {
+        if (error) {
+          throw error;
+        } else {
+          console.log('Saved!', response);
+        }
+      });
+    }
   })
 
   res.end();

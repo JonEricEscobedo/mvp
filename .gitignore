@@ -28,6 +28,7 @@ dist/
 src/config/config.js
 node_modules/
 bower_components/
+database/data/db
 
 # Floobits
 .floo
