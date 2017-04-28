@@ -1,0 +1,25 @@
+{
+  "name": "hrsf75-mvp",
+  "version": "1.0.0",
+  "description": "Weather Go. A simple weather application.",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JonEricEscobedo/hrsf75-mvp.git"
+  },
+  "author": "Jon Eric Escobedo <jonericescobedo@gmail.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/JonEricEscobedo/hrsf75-mvp/issues"
+  },
+  "homepage": "https://github.com/JonEricEscobedo/hrsf75-mvp#readme",
+  "dependencies": {
+    "angular": "^1.6.4",
+    "bootstrap": "^3.3.7",
+    "express": "^4.15.2",
+    "mongoose": "^4.9.6"
+  }
+}
