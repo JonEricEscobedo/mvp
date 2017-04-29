@@ -47,29 +47,6 @@ app.post('/weather', function(req, res) {
   })
   .then(function (data2) { // Dark Sky API data
     currentWeatherInfo.darkSky = JSON.parse(data2);
-    
-    // MongoDB services here...
-    // let currentTemperature = Math.floor(currentWeatherInfo.currently.temperature);
-    // let currentSummary = currentWeatherInfo.currently.summary;
-    // let currentDate = currentWeatherInfo.currently.time;
-    // let currentWeather = new Weather(
-    //   {
-    //     city: currentCity,
-    //     state: currentState,
-    //     temperature: currentTemperature,
-    //     summary: currentSummary,
-    //     date: currentDate
-    //   }
-    // );
-
-    // currentWeather.save(function(error, response) {
-    //   if (error) {
-    //     console.log('Dup entry detected - not saving to MongoDB...');
-    //   } else {
-    //     console.log('Saved!');
-    //   }
-    // });
-
     res.end(JSON.stringify(currentWeatherInfo));
   });
 
@@ -104,34 +81,30 @@ app.post('/search', function(req, res) {
   })
   .then(function (data2) { // Dark Sky API data
     currentWeatherInfo.darkSky = JSON.parse(data2);
-    
+
     // MongoDB services here...
-    
-    // let currentTemperature = Math.floor(currentWeatherInfo.currently.temperature);
-    // let currentSummary = currentWeatherInfo.currently.summary;
-    // let currentDate = currentWeatherInfo.currently.time;
-    // let currentWeather = new Weather(
-    //   {
-    //     city: currentCity,
-    //     state: currentState,
-    //     temperature: currentTemperature,
-    //     summary: currentSummary,
-    //     date: currentDate
-    //   }
-    // );
+    let currentWeather = new Weather(
+      {
+        city: currentWeatherInfo.ipinfo.city,
+        state: currentWeatherInfo.ipinfo.state,
+        temperature: currentWeatherInfo.darkSky.currently.temperature,
+        summary: currentWeatherInfo.darkSky.currently.summary,
+        date: currentWeatherInfo.darkSky.currently.time
+      }
+    );
+
+    currentWeather.save(function(error, response) {
+      if (error) {
+        console.log('Dup entry detected - not saving to MongoDB...');
+      } else {
+        console.log('Saved!');
+      }
+    });
+
     res.end(JSON.stringify(currentWeatherInfo));
   });
     
 
-    // currentWeather.save(function(error, response) {
-    //   if (error) {
-    //     console.log('Dup entry detected - not saving to MongoDB...');
-    //   } else {
-    //     console.log('Saved!');
-    //   }
-    // });
-
-  // });
 
 }); // End of app.post to /weather
 
