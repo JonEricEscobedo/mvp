@@ -2,10 +2,11 @@ angular.module('weather-go', [])
 
 .directive('app', function() {
   return {
+    restrict: 'E',
     controllerAs: 'ctrl',
     bindToController: true,
-    controller: ($http) => {
-      
+    controller: function($http) {
+
       this.fetchWeather = () => {
         $http({
           method: 'POST',
@@ -18,24 +19,21 @@ angular.module('weather-go', [])
         });
       };
 
-      this.getWeather = () => {
+      this.getWeather = () => {  
+        this.currentWeather;
+        var context = this;
         $http({
           method: 'GET',
           url: '/weather'
         })
-        .then(function successCallback(response) {
-          console.log('Successful GET request');
-          let currentWeather = response.data[0];
-          let currentCity = currentWeather.city;
-          let currentTemperature = currentWeather.temp;
-          let currentSummary = currentWeather.summary;
-
-          console.log(currentCity, currentTemperature, currentSummary);
-
+        .then(function successCallback(body) {
+          console.log('inside success callback');
+          context.currentWeather = body.data[0];
         }, function errorCallback(error) {
           console.log('Error in GET request');
         });
       }
+
       this.getWeather();
       // this.fetchWeather();
     },
