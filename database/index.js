@@ -2,7 +2,10 @@ var mongoose = require('mongoose');
 mongoose.connect('mongodb://localhost/almanac');
 
 var weatherSchema = mongoose.Schema({
-  city: String,
+  city: {
+    type: String,
+    unique: true
+  },
   state: String,
   temperature: Number,
   summary: String,

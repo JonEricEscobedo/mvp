@@ -7,6 +7,8 @@ angular.module('weather-go', [])
     bindToController: true,
     controller: function($http) {
 
+
+      // POST METHOD
       this.fetchWeather = () => {
         this.fiveDayForecast;
         var context = this;
@@ -22,6 +24,7 @@ angular.module('weather-go', [])
         });
       };
 
+      // GET METHOD
       this.getWeather = () => {  
         this.currentWeather;
         var context = this;
@@ -30,7 +33,7 @@ angular.module('weather-go', [])
           url: '/weather'
         })
         .then(function successCallback(body) {
-          // console.log('inside success callback');
+          console.log('Successful GET request');
           context.currentWeather = body.data[0];
         }, function errorCallback(error) {
           console.log('Error in GET request');

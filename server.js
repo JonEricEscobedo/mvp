@@ -1,16 +1,20 @@
-var express = require('express');
-var app = express();
-var API = require('./src/config/config.js');
-var request = require('request');
-var Weather = require('./database/index.js');
+const express = require('express');
+const app = express();
+const API = require('./src/config/config.js');
+const request = require('request');
+const Weather = require('./database/index.js');
 let fiveDay = {};
+let currentLoc;
+let currentCity;
+let currentState;
 
 app.use(express.static('./'))
 
-app.get('/', function(req, res) {
-  res.send('Hello World, up and running!');
-});
+// app.get('/', function(req, res) {
+//   res.send('Hello World, up and running!');
+// });
 
+// Start of app.post to /weather
 app.post('/weather', function(req, res) {
   console.log('Inside POST /weather');
 
@@ -25,11 +29,6 @@ app.post('/weather', function(req, res) {
       });
     });
   }
-
-  let currentLoc;
-  let currentCity;
-  let currentState;
-
 
   getRequest('https://ipinfo.io/json') // Ipinfo API Call
   .then(function (data1) { // Ipinfo API data
@@ -56,7 +55,7 @@ app.post('/weather', function(req, res) {
 
     currentWeather.save(function(error, response) {
       if (error) {
-        throw error;
+        console.log('Dup entry detected - not saving to MongoDB...');
       } else {
         console.log('Saved!');
       }
@@ -67,12 +66,13 @@ app.post('/weather', function(req, res) {
     fiveDay.day3 = parsedData2.daily.data[2];
     fiveDay.day4 = parsedData2.daily.data[3];
     fiveDay.day5 = parsedData2.daily.data[4];
-  })
+  });
 
   res.end(JSON.stringify(fiveDay));
-});
+}); // End of app.post to /weather
 
 
+// Start of app.get to /weather
 app.get('/weather', function(req, res) {
   console.log('Inside GET /weather');
 
@@ -82,8 +82,9 @@ app.get('/weather', function(req, res) {
     } else {
       return res.send(response);
     }
-  });
-});
+  })
+  .sort({'date': -1});
+}); // End of app.get to /weather
 
 
 app.listen(1337, function() {
