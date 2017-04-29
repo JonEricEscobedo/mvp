@@ -1,0 +1,8 @@
+<div class="row">
+  <h5>Previous search history:</h5>
+  <ul class="list-group">
+    <li class="list-group-item" ng-repeat="his in ctrl.history">
+      <span>{{his.city}}, {{his.state}} - {{his.temperature | number:0}} degrees - {{his.summary}}</span>
+    </li>
+  </ul>
+</div>

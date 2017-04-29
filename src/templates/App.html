@@ -1,25 +1,35 @@
-<div class="container">
-  
+<div class="container">  
+
+  <!-- Hero -->
   <div class="row weather-hero">
     <h1>Weather Go!</h1>
     <h6>For people on the go. Weather go!</h6>
   </div>
 
   <div class="app-container">
-    <search search="ctrl.search"></search>
+    <!-- Search component -->
+    <search search="ctrl.search"></search> 
 
+    <!-- Today's Weather component -->
     <today weather="ctrl.weather"></today>
 
+    <!-- Five-day forecast component -->
     <forecast five-day="ctrl.fiveDay"></forecast>
 
-    <h5>Previous search history:</h5>
-    <p>(Search history goes here...)</p>
+    <!-- Search history component -->
+    <history history="ctrl.history"></history>
   </div>
-
 </div>
 
-<!-- <footer class="footer">
+<!-- Footer -->
+<footer class="footer">
   <div class="container">
-    <span class="text-muted"><a target="_blank" href="https://darksky.net/poweredby/">Powered by Dark Sky</a> and <a target="_blank" href="https://ipinfo.io/">ipinfo.io</a>.</span>
+    <span class="text-muted">
+    By 
+    <a target="_blank" href="https://github.com/JonEricEscobedo">Jon Eric Escobedo</a> 
+    for Hack Reactor # 75 - For educational purposes only.
+    <a target="_blank" href="https://darksky.net/poweredby/">Powered by Dark Sky</a>, 
+    <a target="_blank" href="https://ipinfo.io/">ipinfo.io</a>, and
+    <a target="_blank" href="http://www.zippopotam.us/">zippopotam</a>.</span>
   </div>
-</footer> -->
+</footer>

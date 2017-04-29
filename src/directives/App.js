@@ -9,7 +9,9 @@ angular.module('weather-go', [])
 
       this.weather;
       this.fiveDay;
+      this.history;
 
+      // Search for Weather Based on Zip Code
       this.search = (query) => {
         var context = this;
         $http({
@@ -24,15 +26,14 @@ angular.module('weather-go', [])
           console.log('Sucessful Search request', body);
           context.weather = body.data;
           context.fiveDay = body.data.darkSky.daily.data;
+          context.history = body.data.history;
         }, function errorCallback(error) {
           console.log('Error in GET request', error);
         })
-      }
+      } // End of Search
 
       // Get Weather at Current Location
       this.getWeather = () => {  
-        // this.weather;
-        // this.fiveDay;
         var context = this;
         $http({
           method: 'POST',
@@ -46,8 +47,9 @@ angular.module('weather-go', [])
         }, function errorCallback(error) {
           console.log('Error in GET request', error);
         });
-      }
-      this.getWeather();
+      } // End of Current Location Weather Fetch
+
+      this.getWeather(); // Get weather on page load
 
     },
     templateUrl: '/src/templates/App.html'

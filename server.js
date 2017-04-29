@@ -4,7 +4,6 @@ const API = require('./src/config/config.js');
 const request = require('request');
 const Weather = require('./database/index.js');
 const bodyParser = require('body-parser');
-
 let currentLoc;
 let currentCity;
 let currentState;
@@ -13,9 +12,6 @@ let currentWeatherInfo = {};
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static('./'))
 
-// app.get('/', function(req, res) {
-//   res.send('Hello World, up and running!');
-// });
 
 // Start of app.post to /weather
 app.post('/weather', function(req, res) {
@@ -52,6 +48,8 @@ app.post('/weather', function(req, res) {
 
 }); // End of app.post to /weather
 
+
+// Start of /search function
 app.post('/search', function(req, res) {
   console.log('Inside POST /search');
   let zipCode = Object.keys(req.body)[0];
@@ -100,26 +98,19 @@ app.post('/search', function(req, res) {
         console.log('Saved!');
       }
     });
-
-    res.end(JSON.stringify(currentWeatherInfo));
+  })
+  .then(function() {
+    Weather.find({}, function(error, response) {
+      if (error) {
+        throw error;
+      } else {
+        currentWeatherInfo.history = response;
+        res.end(JSON.stringify(currentWeatherInfo));
+      }
+    });
   });
     
 }); // End of app.post to /weather
-
-
-// Start of app.get to /weather
-// app.get('/weather', function(req, res) {
-//   console.log('Inside GET /weather');
-
-//   Weather.find({}, function(error, response) {
-//     if (error) {
-//       throw error;
-//     } else {
-//       return res.send(response);
-//     }
-//   })
-//   .sort({'date': -1});
-// }); // End of app.get to /weather
 
 
 app.listen(1337, function() {
