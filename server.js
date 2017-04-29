@@ -104,8 +104,6 @@ app.post('/search', function(req, res) {
     res.end(JSON.stringify(currentWeatherInfo));
   });
     
-
-
 }); // End of app.post to /weather
 
 
