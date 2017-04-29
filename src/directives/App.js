@@ -7,41 +7,40 @@ angular.module('weather-go', [])
     bindToController: true,
     controller: function($http) {
 
+      this.search = (query) => {
+        $http({
+          method: 'POST',
+          url: '/search',
+          headers: {
+            'Content-Type': 'application/x-www-form-urlencoded'
+          },
+          data: query
+        })
+        .then(function successCallback(body) {
+          console.log('fuck yeah')
+        })
+      }
 
-      // POST METHOD
-      this.fetchWeather = () => {
-        this.fiveDayForecast;
+      // Get Weather at Current Location
+      this.getWeather = () => {  
+        this.weather;
+        this.fiveDay;
         var context = this;
         $http({
           method: 'POST',
           url: '/weather'
         })
         .then(function successCallback(body) {
-          console.log('Successful POST request');
-          context.fiveDayForecast = body.data;
-        }, function errorCallback(error) {
-          console.log('Error in POST request');
-        });
-      };
-
-      // GET METHOD
-      this.getWeather = () => {  
-        this.currentWeather;
-        var context = this;
-        $http({
-          method: 'GET',
-          url: '/weather'
-        })
-        .then(function successCallback(body) {
           console.log('Successful GET request');
-          context.currentWeather = body.data[0];
+
+          context.weather = body.data;
+          context.fiveDay = body.data.darkSky.daily.data;
         }, function errorCallback(error) {
           console.log('Error in GET request');
         });
       }
-
       this.getWeather();
-      this.fetchWeather();
+
     },
     templateUrl: '/src/templates/App.html'
   }

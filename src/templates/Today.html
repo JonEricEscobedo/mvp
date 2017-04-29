@@ -1,5 +1,5 @@
 <div class="row weather-today jumbotron">
-  <p id="city-state">{{ctrl.currentWeather.city}}, {{ctrl.currentWeather.state}}</p>
-  <p id="temperature">{{ctrl.currentWeather.temperature}} Degrees</p>
-  <p id="summary">{{ctrl.currentWeather.summary}}</p>
+  <p id="city-state">{{ctrl.weather.ipinfo.city}}, {{ctrl.weather.ipinfo.state}}</p>
+  <p id="temperature">{{ctrl.weather.darkSky.currently.temperature | number:0}} Degrees</p>
+  <p id="summary">{{ctrl.weather.darkSky.currently.summary}}</p>
 </div>

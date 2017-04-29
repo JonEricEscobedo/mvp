@@ -3,7 +3,7 @@ angular.module('weather-go')
 .directive('forecast', function() {
   return {
     scope: {
-      fiveDayForecast: '<'
+      fiveDay: '<'
     },
     restrict: 'E',
     controllerAs: 'ctrl',

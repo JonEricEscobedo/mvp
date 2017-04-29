@@ -3,7 +3,7 @@ angular.module('weather-go')
 .directive('today', function() {
   return {
     scope: {
-      currentWeather: '<'
+      weather: '<'
     },
     restrict: 'E',
     controllerAs: 'ctrl',

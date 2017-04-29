@@ -23,7 +23,7 @@
 }
 
 .app-container {
-  margin-top: 40px;
+  margin-top: 30px;
 }
 #city-state {
   font-size: 3em;
@@ -40,4 +40,14 @@
 
 .center-me {
   text-align: center;
+}
+
+.footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  /* Set the fixed height of the footer here */
+  height: 60px;
+  line-height: 60px; /* Vertically center the text there */
+  background-color: #f5f5f5;
 }

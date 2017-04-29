@@ -1,13 +1,22 @@
 <div class="container">
+  
   <div class="row weather-hero">
     <h1>Weather Go!</h1>
     <h6>For people on the go. Weather go!</h6>
   </div>
+
   <div class="app-container">
-  <search></search>
+    <search search="ctrl.search"></search>
 
-  <today current-weather="ctrl.currentWeather"></today>
+    <today weather="ctrl.weather"></today>
 
-  <forecast five-day-forecast="ctrl.fiveDayForecast"></forecast>
+    <forecast five-day="ctrl.fiveDay"></forecast>
   </div>
+
 </div>
+
+<footer class="footer">
+  <div class="container">
+    <span class="text-muted"><a target="_blank" href="https://darksky.net/poweredby/">Powered by Dark Sky</a> and <a target="_blank" href="https://ipinfo.io/">ipinfo.io</a>.</span>
+  </div>
+</footer>

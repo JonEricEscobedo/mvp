@@ -1,8 +1,8 @@
 <div class="col-xs-2">
   <div class="row weather-search">
     <div class="input-group">
-      <input class="form-control" type="text" placeholder="Zip code...">
-      <span class="input-group-btn"><button class="btn btn-primary">Go!</button></span>
+      <input ng-model="ctrl.query" class="form-control" type="text" placeholder="Zip code...">
+      <span class="input-group-btn"><button class="btn btn-primary" ng-click="ctrl.onClick()">Go!</button></span>
     </div>
   </div>
 </div>

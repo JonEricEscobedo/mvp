@@ -3,28 +3,28 @@
 
     <thead>
       <tr> <!-- Table Headers -->
-        <th class="center-me">{{ctrl.fiveDayForecast.today.time * 1000| date:'EEE'}}</th>
-        <th class="center-me">{{ctrl.fiveDayForecast.day2.time * 1000| date:'EEE'}}</th>
-        <th class="center-me">{{ctrl.fiveDayForecast.day3.time * 1000| date:'EEE'}}</th>
-        <th class="center-me">{{ctrl.fiveDayForecast.day4.time * 1000| date:'EEE'}}</th>
-        <th class="center-me">{{ctrl.fiveDayForecast.day5.time * 1000| date:'EEE'}}</th>
+        <th class="center-me">{{ctrl.fiveDay[0].time * 1000| date:'EEE'}}</th>
+        <th class="center-me">{{ctrl.fiveDay[1].time * 1000| date:'EEE'}}</th>
+        <th class="center-me">{{ctrl.fiveDay[2].time * 1000| date:'EEE'}}</th>
+        <th class="center-me">{{ctrl.fiveDay[3].time * 1000| date:'EEE'}}</th>
+        <th class="center-me">{{ctrl.fiveDay[4].time * 1000| date:'EEE'}}</th>
       </tr>
     </thead>
 
     <tbody>
       <tr> <!-- Min / Max Temperature -->
-        <td><span class="high">{{ctrl.fiveDayForecast.today.temperatureMax | number:0}}</span> | <span class="low">{{ctrl.fiveDayForecast.today.temperatureMin | number:0}}</span></td>
-        <td><span class="high">{{ctrl.fiveDayForecast.day2.temperatureMax | number:0}}</span> | <span class="low">{{ctrl.fiveDayForecast.day2.temperatureMin | number:0}}</span></td>
-        <td><span class="high">{{ctrl.fiveDayForecast.day3.temperatureMax | number:0}}</span> | <span class="low">{{ctrl.fiveDayForecast.day3.temperatureMin | number:0}}</span></td>
-        <td><span class="high">{{ctrl.fiveDayForecast.day4.temperatureMax | number:0}}</span> | <span class="low">{{ctrl.fiveDayForecast.day4.temperatureMin | number:0}}</span></td>
-        <td><span class="high">{{ctrl.fiveDayForecast.day5.temperatureMax | number:0}}</span> | <span class="low">{{ctrl.fiveDayForecast.day5.temperatureMin | number:0}}</span></td>
+        <td><span class="high">{{ctrl.fiveDay[0].temperatureMax | number:0}}</span> | <span class="low">{{ctrl.fiveDay[0].temperatureMin | number:0}}</span></td>
+        <td><span class="high">{{ctrl.fiveDay[1].temperatureMax | number:0}}</span> | <span class="low">{{ctrl.fiveDay[1].temperatureMin | number:0}}</span></td>
+        <td><span class="high">{{ctrl.fiveDay[2].temperatureMax | number:0}}</span> | <span class="low">{{ctrl.fiveDay[2].temperatureMin | number:0}}</span></td>
+        <td><span class="high">{{ctrl.fiveDay[3].temperatureMax | number:0}}</span> | <span class="low">{{ctrl.fiveDay[3].temperatureMin | number:0}}</span></td>
+        <td><span class="high">{{ctrl.fiveDay[4].temperatureMax | number:0}}</span> | <span class="low">{{ctrl.fiveDay[4].temperatureMin | number:0}}</span></td>
       </tr>
       <tr> <!-- Summary -->
-        <td>{{ctrl.fiveDayForecast.today.summary}}</td>
-        <td>{{ctrl.fiveDayForecast.day2.summary}}</td>
-        <td>{{ctrl.fiveDayForecast.day3.summary}}</td>
-        <td>{{ctrl.fiveDayForecast.day4.summary}}</td>
-        <td>{{ctrl.fiveDayForecast.day5.summary}}</td>
+        <td>{{ctrl.fiveDay[0].summary}}</td>
+        <td>{{ctrl.fiveDay[1].summary}}</td>
+        <td>{{ctrl.fiveDay[2].summary}}</td>
+        <td>{{ctrl.fiveDay[3].summary}}</td>
+        <td>{{ctrl.fiveDay[4].summary}}</td>
       </tr>
     </tbody>
 
