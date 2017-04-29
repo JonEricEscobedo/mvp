@@ -8,8 +8,8 @@ angular.module('weather-go')
     restrict: 'E',
     controllerAs: 'ctrl',
     bindToController: true,
-    controller: () => {
-      console.log('inside today')
+    controller: function() {
+      
     },
     templateUrl: '/src/templates/Today.html'
   }

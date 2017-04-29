@@ -69,7 +69,7 @@ app.post('/weather', function(req, res) {
     fiveDay.day5 = parsedData2.daily.data[4];
   })
 
-  res.end();
+  res.end(JSON.stringify(fiveDay));
 });
 
 

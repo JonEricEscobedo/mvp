@@ -1,3 +1,40 @@
-<div class="row weather-forecast">
-  <p class="jumbotron">Five-day forecast goes here</p>
+<div class="row weather-forecast jumbotron">
+  <table>
+
+    <thead>
+      <tr> <!-- Table Headers -->
+        <th>Day 1</th>
+        <th>Day 2</th>
+        <th>Day 3</th>
+        <th>Day 4</th>
+        <th>Day 5</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <tr> <!-- Min / Max Temperature -->
+        <td>{{ctrl.fiveDayForecast.today.temperatureMax}} | {{ctrl.fiveDayForecast.today.temperatureMin}}</td>
+        <td>{{ctrl.fiveDayForecast.day2.temperatureMax}} | {{ctrl.fiveDayForecast.day2.temperatureMin}}</td>
+        <td>{{ctrl.fiveDayForecast.day3.temperatureMax}} | {{ctrl.fiveDayForecast.day3.temperatureMin}}</td>
+        <td>{{ctrl.fiveDayForecast.day4.temperatureMax}} | {{ctrl.fiveDayForecast.day4.temperatureMin}}</td>
+        <td>{{ctrl.fiveDayForecast.day5.temperatureMax}} | {{ctrl.fiveDayForecast.day5.temperatureMin}}</td>
+      </tr>
+      <tr> <!-- Summary -->
+        <td>{{ctrl.fiveDayForecast.today.summary}}</td>
+        <td>{{ctrl.fiveDayForecast.day2.summary}}</td>
+        <td>{{ctrl.fiveDayForecast.day3.summary}}</td>
+        <td>{{ctrl.fiveDayForecast.day4.summary}}</td>
+        <td>{{ctrl.fiveDayForecast.day5.summary}}</td>
+      </tr>
+    </tbody>
+
+  </table>
+
+  <!-- <span>{{ctrl.fiveDayForecast.today.summary}}<span>
+  <span>{{ctrl.fiveDayForecast.day2.summary}}<span>
+  <span>{{ctrl.fiveDayForecast.day3.summary}}<span>
+  <span>{{ctrl.fiveDayForecast.day4.summary}}<span>
+  <span>{{ctrl.fiveDayForecast.day5.summary}}<span> -->
 </div>
+
+temperatureMax

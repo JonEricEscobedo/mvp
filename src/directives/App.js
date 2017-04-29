@@ -8,12 +8,15 @@ angular.module('weather-go', [])
     controller: function($http) {
 
       this.fetchWeather = () => {
+        this.fiveDayForecast;
+        var context = this;
         $http({
           method: 'POST',
           url: '/weather'
         })
-        .then(function successCallback(response) {
+        .then(function successCallback(body) {
           console.log('Successful POST request');
+          context.fiveDayForecast = body.data;
         }, function errorCallback(error) {
           console.log('Error in POST request');
         });
@@ -27,7 +30,7 @@ angular.module('weather-go', [])
           url: '/weather'
         })
         .then(function successCallback(body) {
-          console.log('inside success callback');
+          // console.log('inside success callback');
           context.currentWeather = body.data[0];
         }, function errorCallback(error) {
           console.log('Error in GET request');
