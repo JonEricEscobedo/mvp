@@ -3,7 +3,8 @@ mongoose.connect('mongodb://localhost/almanac');
 
 var weatherSchema = mongoose.Schema({
   city: String,
-  temp: Number,
+  state: String,
+  temperature: Number,
   summary: String,
   date: Date
 });

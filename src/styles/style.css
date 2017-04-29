@@ -13,3 +13,16 @@
 .weather-forecast  {
   
 }
+
+#city-state {
+  font-size: 2.5em;
+  text-align: center;
+}
+
+#temperature {
+  text-align: center;
+}
+
+#summary {
+  text-align: center;
+}
