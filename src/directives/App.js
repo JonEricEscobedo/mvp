@@ -7,7 +7,11 @@ angular.module('weather-go', [])
     bindToController: true,
     controller: function($http) {
 
+      this.weather;
+      this.fiveDay;
+
       this.search = (query) => {
+        var context = this;
         $http({
           method: 'POST',
           url: '/search',
@@ -17,14 +21,18 @@ angular.module('weather-go', [])
           data: query
         })
         .then(function successCallback(body) {
-          console.log('fuck yeah')
+          console.log('Sucessful Search request', body);
+          context.weather = body.data;
+          context.fiveDay = body.data.darkSky.daily.data;
+        }, function errorCallback(error) {
+          console.log('Error in GET request', error);
         })
       }
 
       // Get Weather at Current Location
       this.getWeather = () => {  
-        this.weather;
-        this.fiveDay;
+        // this.weather;
+        // this.fiveDay;
         var context = this;
         $http({
           method: 'POST',
@@ -36,7 +44,7 @@ angular.module('weather-go', [])
           context.weather = body.data;
           context.fiveDay = body.data.darkSky.daily.data;
         }, function errorCallback(error) {
-          console.log('Error in GET request');
+          console.log('Error in GET request', error);
         });
       }
       this.getWeather();
