@@ -9,7 +9,7 @@ angular.module('weather-go')
     controllerAs: 'ctrl',
     bindToController: true,
     controller: function() {
-
+      this.Math = window.Math;
     },
     templateUrl: '/src/templates/Forecast.html'
   }

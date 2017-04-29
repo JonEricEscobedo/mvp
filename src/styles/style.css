@@ -15,7 +15,7 @@
 }
 
 #city-state {
-  font-size: 2.5em;
+  font-size: 3em;
   text-align: center;
 }
 
@@ -29,4 +29,12 @@
 
 #center-me {
   align-items: center;
+}
+
+.high {
+  color: #F0AD4E;
+}
+
+.low {
+  color: #539BD2;
 }
