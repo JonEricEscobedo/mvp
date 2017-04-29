@@ -34,8 +34,8 @@ angular.module('weather-go', [])
         });
       }
 
-      this.getWeather();
-      // this.fetchWeather();
+      // this.getWeather();
+      this.fetchWeather();
     },
     templateUrl: '/src/templates/App.html'
   }
