@@ -41,7 +41,6 @@ angular.module('weather-go', [])
         })
         .then(function successCallback(body) {
           console.log('Successful GET request');
-
           context.weather = body.data;
           context.fiveDay = body.data.darkSky.daily.data;
         }, function errorCallback(error) {

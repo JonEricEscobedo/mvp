@@ -9,7 +9,6 @@ angular.module('weather-go')
     controllerAs: 'ctrl',
     bindToController: true,
     controller: function() {
-      
     },
     templateUrl: '/src/templates/Today.html'
   }

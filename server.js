@@ -1,6 +1,6 @@
 const express = require('express');
 const app = express();
-const API = require('./src/config/config.js');
+// const API = require('./src/config/config.js');
 const request = require('request');
 const Weather = require('./database/index.js');
 const bodyParser = require('body-parser');
@@ -39,7 +39,8 @@ app.post('/weather', function(req, res) {
       city: currentCity,
       state: currentState
     }
-    return getRequest(`https://api.darksky.net/forecast/${API.DARK_KEY}/${currentLoc}?exclude=minutely,hourly,flags`); // Dark Sky API Call
+    // return getRequest(`https://api.darksky.net/forecast/${API.DARK_KEY}/${currentLoc}?exclude=minutely,hourly,flags`); // Dark Sky API Call
+    return getRequest(`https://api.darksky.net/forecast/${DARK_KEY}/${currentLoc}?exclude=minutely,hourly,flags`); // Dark Sky API Call
   })
   .then(function (data2) { // Dark Sky API data
     currentWeatherInfo.darkSky = JSON.parse(data2);
@@ -75,7 +76,8 @@ app.post('/search', function(req, res) {
       city: zipLocation.places[0]['place name'],
       state: zipLocation.places[0].state
     };
-    return getRequest(`https://api.darksky.net/forecast/${API.DARK_KEY}/${requestedLat},${requestedLon}?exclude=minutely,hourly,flags`); // Dark Sky API Call
+    // return getRequest(`https://api.darksky.net/forecast/${API.DARK_KEY}/${requestedLat},${requestedLon}?exclude=minutely,hourly,flags`); // Dark Sky API Call
+    return getRequest(`https://api.darksky.net/forecast/${DARK_KEY}/${requestedLat},${requestedLon}?exclude=minutely,hourly,flags`); // Dark Sky API Call
   })
   .then(function (data2) { // Dark Sky API data
     currentWeatherInfo.darkSky = JSON.parse(data2);
@@ -107,7 +109,7 @@ app.post('/search', function(req, res) {
         currentWeatherInfo.history = response;
         res.end(JSON.stringify(currentWeatherInfo));
       }
-    });
+    }).sort({_id: -1});
   });
     
 }); // End of app.post to /weather
