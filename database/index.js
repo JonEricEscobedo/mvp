@@ -1,6 +1,7 @@
 var mongoose = require('mongoose');
-// mongoose.connect('mongodb://localhost/almanac');
-mongoose.connect('mongodb://jescobedo:jescobedo@ds145667.mlab.com:45667/jeeweather');
+let databaseUrl = process.env.MONGODB_URI || 'mongodb://localhost/almanac';
+
+mongoose.connect(databaseUrl);
 
 var weatherSchema = mongoose.Schema({
   city: String,

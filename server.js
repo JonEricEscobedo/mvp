@@ -1,9 +1,10 @@
 const express = require('express');
 const app = express();
-// const API = require('./src/config/config.js');
+const DARK_KEY = require('./src/config/config.js').DARK_KEY;
 const request = require('request');
 const Weather = require('./database/index.js');
 const bodyParser = require('body-parser');
+let PORT = process.env.PORT || 1337;
 let currentLoc;
 let currentCity;
 let currentState;
@@ -115,6 +116,6 @@ app.post('/search', function(req, res) {
 }); // End of app.post to /weather
 
 
-app.listen(1337, function() {
+app.listen(PORT, function() {
   console.log('Now listening on port 1337!');
 });
