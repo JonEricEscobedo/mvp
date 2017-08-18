@@ -10,6 +10,7 @@ angular.module('weather-go', [])
       this.weather;
       this.fiveDay;
       this.history;
+      this.icon;
 
       // Search for Weather Based on Zip Code
       this.search = (query) => {
@@ -51,9 +52,29 @@ angular.module('weather-go', [])
           .then((weather) => {
             let currentWeather = weather.data.darkSky;
             context.weather.darkSky = currentWeather;
+            context.icon = currentWeather.currently.icon;
             context.fiveDay = weather.data.darkSky.daily.data;
-          })
-        })
+            console.log(context.icon, context.weather)
+
+              let skycons = new Skycons({
+                "monochrome": false,
+                "colors": {
+                  "main": "#333333",
+                  "moon": "#78586F",
+                  "fog": "#78586F",
+                  "fogbank": "#B4ADA3",
+                  "cloud": "#B4ADA3",
+                  "snow": "#7B9EA8",
+                  "leaf":"#7B9EA8",
+                  "rain": "#7B9EA8",
+                  "sun": "#FF8C42"
+                } 
+              });
+            // console.log(skycons, context.icon)
+            skycons.add('icon1', context.icon);
+            skycons.play();
+          });
+        });
       } // End of Current Location Weather Fetch
 
       this.getWeather(); // Get weather on page load

@@ -1,4 +1,7 @@
 <div class="row weather-today jumbotron">
+  <div class="text-center">
+    <canvas id="icon1" width="200" height="200"></canvas>
+  </div>
   <p id="city-state">{{ctrl.weather.ipinfo.city}}, {{ctrl.weather.ipinfo.state}}</p>
   <p id="temperature">{{ctrl.weather.darkSky.currently.temperature | number:0}} Degrees</p>
   <p id="summary">{{ctrl.weather.darkSky.currently.summary}}</p>

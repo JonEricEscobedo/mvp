@@ -3,12 +3,13 @@ angular.module('weather-go')
 .directive('today', function() {
   return {
     scope: {
-      weather: '<'
+      weather: '<',
     },
     restrict: 'E',
     controllerAs: 'ctrl',
     bindToController: true,
     controller: function() {
+
     },
     templateUrl: '/src/templates/Today.html'
   }
