@@ -1,6 +1,6 @@
 const express = require('express');
 const app = express();
-const DARK_KEY = require('./src/config/config.js').DARK_KEY;
+const DARK_KEY = process.env.DARK_KEY || require('./src/config/config.js').DARK_KEY;
 const request = require('request');
 const Weather = require('./database/index.js');
 const bodyParser = require('body-parser');
@@ -62,7 +62,7 @@ app.post('/search', function(req, res) {
     let zipLocation = JSON.parse(data1)
     let requestedLat = zipLocation.places[0].latitude;
     let requestedLon = zipLocation.places[0].longitude;
-    
+
     currentWeatherInfo.ipinfo = {
       city: zipLocation.places[0]['place name'],
       state: zipLocation.places[0].state
