@@ -34,18 +34,26 @@ angular.module('weather-go', [])
 
       // Get Weather at Current Location
       this.getWeather = () => {  
-        var context = this;
+        let context = this;
         $http({
-          method: 'POST',
-          url: '/weather'
+          method: 'GET',
+          url: 'https://ipinfo.io/json'
         })
-        .then(function successCallback(body) {
-          console.log('Successful GET request');
-          context.weather = body.data;
-          context.fiveDay = body.data.darkSky.daily.data;
-        }, function errorCallback(error) {
-          console.log('Error in GET request', error);
-        });
+        .then((success) => {
+          console.log(success);
+        })
+        // var context = this;
+        // $http({
+        //   method: 'POST',
+        //   url: '/weather'
+        // })
+        // .then(function successCallback(body) {
+        //   console.log('Successful GET request');
+        //   context.weather = body.data;
+        //   context.fiveDay = body.data.darkSky.daily.data;
+        // }, function errorCallback(error) {
+        //   console.log('Error in GET request', error);
+        // });
       } // End of Current Location Weather Fetch
 
       this.getWeather(); // Get weather on page load
