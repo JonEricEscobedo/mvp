@@ -13,15 +13,10 @@ angular.module('weather-go', [])
 
       // Search for Weather Based on Zip Code
       this.search = (query) => {
-        var context = this;
-        $http({
-          method: 'POST',
-          url: '/search',
-          headers: {
-            'Content-Type': 'application/x-www-form-urlencoded'
-          },
-          data: query
-        })
+        let context = this;
+        let currentLoc = null;
+  
+        $http.post( '/search', {zip: query} )
         .then(function successCallback(body) {
           console.log('Sucessful Search request', body);
           context.weather = body.data;
@@ -39,21 +34,26 @@ angular.module('weather-go', [])
           method: 'GET',
           url: 'https://ipinfo.io/json'
         })
-        .then((success) => {
-          console.log(success);
+        .then((loc) => {
+          let location = loc.data
+          context.weather = {
+            ipinfo: {
+              city: location.city,
+              state: location.region
+            },
+            darkSky: {}
+          }
+          currentLoc = location.loc;
+          
         })
-        // var context = this;
-        // $http({
-        //   method: 'POST',
-        //   url: '/weather'
-        // })
-        // .then(function successCallback(body) {
-        //   console.log('Successful GET request');
-        //   context.weather = body.data;
-        //   context.fiveDay = body.data.darkSky.daily.data;
-        // }, function errorCallback(error) {
-        //   console.log('Error in GET request', error);
-        // });
+        .then(() => {
+          $http.post( '/weather', {location: currentLoc} )
+          .then((weather) => {
+            let currentWeather = weather.data.darkSky;
+            context.weather.darkSky = currentWeather;
+            context.fiveDay = weather.data.darkSky.daily.data;
+          })
+        })
       } // End of Current Location Weather Fetch
 
       this.getWeather(); // Get weather on page load

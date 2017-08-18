@@ -10,7 +10,7 @@ let currentCity;
 let currentState;
 let currentWeatherInfo = {};
 
-app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json());
 app.use(express.static('./'))
 
 
@@ -18,7 +18,7 @@ app.use(express.static('./'))
 app.post('/weather', function(req, res) {
   console.log('Inside POST /weather');
 
-  function getRequest(url) {
+  let getRequest = (url) => {
     return new Promise(function (success, failure) {
       request(url, function (error, response, body) {
         if (error) {
@@ -30,33 +30,22 @@ app.post('/weather', function(req, res) {
     });
   }
 
-  getRequest('https://ipinfo.io/json') // Ipinfo API Call
-  .then(function (data1) { // Ipinfo API data
-    let ipLocation = JSON.parse(data1);
-    currentLoc = ipLocation.loc;
-    currentCity = ipLocation.city;
-    currentState = ipLocation.region;
-    currentWeatherInfo.ipinfo = {
-      city: currentCity,
-      state: currentState
-    }
-    // return getRequest(`https://api.darksky.net/forecast/${API.DARK_KEY}/${currentLoc}?exclude=minutely,hourly,flags`); // Dark Sky API Call
-    return getRequest(`https://api.darksky.net/forecast/${DARK_KEY}/${currentLoc}?exclude=minutely,hourly,flags`); // Dark Sky API Call
-  })
-  .then(function (data2) { // Dark Sky API data
-    currentWeatherInfo.darkSky = JSON.parse(data2);
+  let currentLoc = req.body.location;
+  getRequest(`https://api.darksky.net/forecast/${DARK_KEY}/${currentLoc}?exclude=minutely,hourly,flags`) // Dark Sky API Cal
+  .then((weatherData) => {
+    currentWeatherInfo.darkSky = JSON.parse(weatherData);
     res.end(JSON.stringify(currentWeatherInfo));
   });
-
+  
 }); // End of app.post to /weather
 
 
 // Start of /search function
 app.post('/search', function(req, res) {
   console.log('Inside POST /search');
-  let zipCode = Object.keys(req.body)[0];
+  let zipCode = req.body.zip;
 
-  function getRequest(url) {
+  let getRequest = (url) => {
     return new Promise(function (success, failure) {
       request(url, function (error, response, body) {
         if (error) {
@@ -73,11 +62,12 @@ app.post('/search', function(req, res) {
     let zipLocation = JSON.parse(data1)
     let requestedLat = zipLocation.places[0].latitude;
     let requestedLon = zipLocation.places[0].longitude;
+    
     currentWeatherInfo.ipinfo = {
       city: zipLocation.places[0]['place name'],
       state: zipLocation.places[0].state
     };
-    // return getRequest(`https://api.darksky.net/forecast/${API.DARK_KEY}/${requestedLat},${requestedLon}?exclude=minutely,hourly,flags`); // Dark Sky API Call
+
     return getRequest(`https://api.darksky.net/forecast/${DARK_KEY}/${requestedLat},${requestedLon}?exclude=minutely,hourly,flags`); // Dark Sky API Call
   })
   .then(function (data2) { // Dark Sky API data
@@ -113,7 +103,7 @@ app.post('/search', function(req, res) {
     }).sort({_id: -1});
   });
     
-}); // End of app.post to /weather
+}); // End of app.post to /search
 
 
 app.listen(PORT, function() {
